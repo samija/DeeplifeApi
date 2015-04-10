@@ -9,7 +9,6 @@ return array(
     'db' => array(
         'adapters' => array(
             'deeplife' => array(),
-            'check' => array(),
         ),
     ),
 );
