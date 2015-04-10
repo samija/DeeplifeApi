@@ -16,6 +16,20 @@
  * file.
  */
 
+    // ... connecting to the database
+
+
 return array(
-    // ...
+    'db' => array(
+        'driver'   => 'Pdo',
+        'username' => 'deeplife',
+        'password' => 'deeplife',
+        'dsn'            => 'mysql:dbname=deeplife;host=localhost',
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'Zend\Db\Adapter\Adapter'
+            => 'Zend\Db\Adapter\AdapterServiceFactory',
+        ),
+    ),
 );
