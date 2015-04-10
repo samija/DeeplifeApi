@@ -28,7 +28,7 @@ return array(
             'listener' => 'Deeplife\\V1\\Rest\\User\\UserResource',
             'route_name' => 'deeplife.rest.user',
             'route_identifier_name' => 'user_id',
-            'collection_name' => 'user',
+            'collection_name' => 'users',
             'entity_http_methods' => array(
                 0 => 'GET',
                 1 => 'PATCH',

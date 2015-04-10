@@ -21,7 +21,7 @@
 
 return array(
     'db' => array(
-        'driver'   => 'Pdo',
+        'driver'   => 'Pdo_Mysql',
         'username' => 'deeplife',
         'password' => 'deeplife',
         'dsn'            => 'mysql:dbname=deeplife;host=localhost',

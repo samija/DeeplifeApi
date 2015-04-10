@@ -11,7 +11,7 @@ use Zend\Db\Sql;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Paginator\Adapter\DbSelect;
 
-class UserRegMapper
+class UserMapper
 {
     protected $adapter;
 
@@ -24,26 +24,26 @@ class UserRegMapper
     }
 
     /**
-     * @return UserRegCollection
+     * @return UserCollection
      */
     public function fetchAll()
     {
         $select = new Select('users');
         $paginatorAdapter = new DbSelect($select, $this->adapter);
-        $collection = new UserRegCollection($paginatorAdapter);
+        $collection = new UserCollection($paginatorAdapter);
 
         return $collection;
     }
 
     /**
-     * @param $userId
-     * @return bool|UserRegEntity
+     * @param $User_Id
+     * @return bool|UserEntity
      */
-    public function fetchOne($user_id)
+    public function fetchOne($User_Id)
     {
         $sql = 'SELECT * FROM users WHERE User_Id = ?';
 
-        $resultset = $this->adapter->query($sql, array($user_id));
+        $resultset = $this->adapter->query($sql, array($User_Id));
         if (!$resultset)
             return false;
         $entity = $resultset->toArray();
