@@ -3,7 +3,7 @@ namespace users\V1\Rest\Users;
 
 class UsersEntity
 {
-    public $user_id;
+    public $User_Id;
     public $First_Name;
     public $Last_Name;
     public $Username;
@@ -20,7 +20,7 @@ class UsersEntity
     public function getArrayCopy()
     {
         return array(
-            'user_id' => $this->user_id,
+            'User_Id' => $this->User_Id,
             'First_name' => $this->First_name,
             'Last_name' => $this->Last_name,
             'Email' => $this->Email,
@@ -30,7 +30,7 @@ class UsersEntity
     }
     public function exchangeArray(array $array)
     {
-         $this->user_id    = $array['user_id'];
+         $this->User_Id    = $array['User_Id'];
          $this->First_name = $array['First_name'];
          $this->Last_name  = $array['Last_name'];
          $this->Email      = $array['Email'];

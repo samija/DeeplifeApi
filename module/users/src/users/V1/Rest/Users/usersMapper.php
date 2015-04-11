@@ -35,16 +35,16 @@ class UsersMapper
      * @internal param $userId
      * @return bool|UserSEntity
      */
-    public function fetchOne($user_id)
+    public function fetchOne($User_Id)
     {
-        $sql = 'SELECT * FROM users WHERE user_id = ?';
+        $sql = 'SELECT * FROM users WHERE User_Id = ?';
 
-        $resultset = $this->adapter->query($sql,array($user_id));
+        $resultset = $this->adapter->query($sql,array($User_Id));
         $result=$resultset->toArray();
-        if(!$result)
-            return false;
-        $entity = new UsersEntity();
-        $entity->exchangeArray($result[0]);
-        return $entity;
+//        if(!$result)
+//            return false;
+//        $entity = new UsersEntity();
+//        $entity->exchangeArray($result[0]);
+        return $result;
     }
 }

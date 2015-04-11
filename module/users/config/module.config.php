@@ -5,7 +5,7 @@ return array(
             'users.rest.users' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/users[/users_id]',
+                    'route' => '/users[/:user_id]',
                     'defaults' => array(
                         'controller' => 'users\\V1\\Rest\\Users\\Controller',
                     ),
@@ -27,7 +27,7 @@ return array(
         'users\\V1\\Rest\\Users\\Controller' => array(
             'listener' => 'users\\V1\\Rest\\Users\\UsersResource',
             'route_name' => 'users.rest.users',
-            'route_identifier_name' => 'users_id',
+            'route_identifier_name' => 'user_id',
             'collection_name' => 'users',
             'entity_http_methods' => array(
                 0 => 'GET',
@@ -68,15 +68,15 @@ return array(
     'zf-hal' => array(
         'metadata_map' => array(
             'users\\V1\\Rest\\Users\\UsersEntity' => array(
-                'entity_identifier_name' => 'users_id',
+                'entity_identifier_name' => 'user_id',
                 'route_name' => 'users.rest.users',
-                'route_identifier_name' => 'users_id',
+                'route_identifier_name' => 'user_id',
                 'hydrator' => 'arrayserializable',
             ),
             'users\\V1\\Rest\\Users\\UsersCollection' => array(
-                'entity_identifier_name' => 'id',
+                'entity_identifier_name' => 'user_id',
                 'route_name' => 'users.rest.users',
-                'route_identifier_name' => 'users',
+                'route_identifier_name' => 'user_id',
                 'is_collection' => true,
             ),
         ),
