@@ -47,4 +47,12 @@ class UsersMapper
 //        $entity->exchangeArray($result[0]);
         return $result;
     }
+    public function creat($data)
+    {
+        $data = (array)$data;
+        $sql= 'INSERT INTO  users.First_Name, users.Last_Name, users.User_Name, users.Email, users.Phone_No, users.Password)
+        VALUES ($data[First_Name],$data[Last_Name],$data[User_Name],$data[Email],$data[Phone_No],$data[Password])';
+        $this->adapter->query($sql);
+        return  ;
+    }
 }
