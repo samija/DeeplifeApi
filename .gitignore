@@ -2,11 +2,8 @@
 composer.phar
 vendor/
 
-
 # WebStorm, PHPStorm
 .idea/
 
 # Project
-config/autolad/global.php
-config/autolad/user.global.php
-config/autolad/zfconfig.php
+config/autoload/

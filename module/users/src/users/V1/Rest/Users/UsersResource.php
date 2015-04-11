@@ -1,11 +1,18 @@
 <?php
-namespace Deeplife\V1\Rest\User;
+namespace users\V1\Rest\Users;
 
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 
-class UserResource extends AbstractResourceListener
+class UsersResource extends AbstractResourceListener
 {
+    // mapper intigration
+    protected $mapper;
+
+    public function __construct($mapper)
+    {
+        $this->mapper = $mapper;
+    }
     /**
      * Create a resource
      *
@@ -45,9 +52,10 @@ class UserResource extends AbstractResourceListener
      * @param  mixed $id
      * @return ApiProblem|mixed
      */
-    public function fetch($id)
+    public function fetch($user_id)
     {
-        return new ApiProblem(405, 'The GET method has not been defined for individual resources');
+        return $this->mapper->fetchOne($user_id);
+       // return new ApiProblem(405, 'The GET method has not been defined for individual resources');
     }
 
     /**
@@ -58,7 +66,8 @@ class UserResource extends AbstractResourceListener
      */
     public function fetchAll($params = array())
     {
-        return new ApiProblem(405, 'The GET method has not been defined for collections');
+        return $this->mapper->fetchAll();
+        //return new ApiProblem(405, 'The GET method has not been defined for collections');
     }
 
     /**

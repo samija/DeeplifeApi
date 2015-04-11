@@ -16,15 +16,12 @@
  * file.
  */
 
-    // ... connecting to the database
-
-
 return array(
     'db' => array(
         'driver'   => 'Pdo_Mysql',
-        'username' => 'deeplife',
-        'password' => 'deeplife',
-        'dsn'            => 'mysql:dbname=deeplife;host=localhost',
+        'database' => 'deeplife',
+        'username' => 'root',
+        'hostname' => 'localhost',
     ),
     'service_manager' => array(
         'factories' => array(

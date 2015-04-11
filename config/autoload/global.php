@@ -2,7 +2,7 @@
 return array(
     'db' => array(
         'adapters' => array(
-            'dbconnect' => array(),
+            'usersAdapter' => array(),
         ),
     ),
 );

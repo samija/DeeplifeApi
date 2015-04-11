@@ -1,21 +1,10 @@
 <?php
-namespace Deeplife;
+namespace users;
 
 use ZF\Apigility\Provider\ApigilityProviderInterface;
 
 class Module implements ApigilityProviderInterface
 {
-    public function getServiceConfig()
-    {
-        return array(
-            'factories' => array(
-                'Deeplife\V1\Rest\User\UserMapper' => function ($sm) {
-                    $adapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    return new \Deeplife\V1\Rest\User\UserMapper($adapter);
-                },
-            ),
-        );
-    }
     public function getConfig()
     {
         return include __DIR__ . '/../../config/module.config.php';
@@ -28,6 +17,17 @@ class Module implements ApigilityProviderInterface
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__,
                 ),
+            ),
+        );
+    }
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'users\V1\Rest\users\UsersMapper' =>  function ($sm) {
+                    $adapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    return new \users\V1\Rest\Users\UsersMapper($adapter);
+                },
             ),
         );
     }
