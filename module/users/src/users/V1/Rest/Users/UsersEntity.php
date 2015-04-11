@@ -12,6 +12,7 @@ class UsersEntity
     public $Password;
     public $gid;
     public $gen;
+    public $gSen;
     public $rid;
     public $rName;
     public $ucid;
