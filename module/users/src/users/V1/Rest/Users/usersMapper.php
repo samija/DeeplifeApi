@@ -5,6 +5,7 @@ use Zend\Db\Sql\Select;
 use Zend\Db\Sql;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Paginator\Adapter\DbSelect;
+use ZFTest\ApiProblem\ApiProblemTest;
 
 class UsersMapper
 {
@@ -55,16 +56,9 @@ class UsersMapper
     public function create($data)
     {
          $data= (array) $data;
-//         $data['First_Name'];
-//        $data['Last_Name'];
-//        $data['User_Name'];
-//        $data['Email'];
-//        $data['Phone_No'];
-//        ;
-
-        $sql= "INSERT INTO   `users`(`User_Id`, `First_Name`, `Last_Name`, `User_Name`, `Email`, `Phone_No`, `Password`)
-        VALUES (4,'$data[First_Name]','$data[Last_Name]','$data[User_Name]','$data[Email]','$data[Phone_No]','$data[Password]')";
-        $this->adapter->query($sql);
+        $sql= "INSERT INTO `deeplife v1`.`users` (`User_Id`, `First_Name`, `Last_Name`, `User_Name`, `Email`, `Phone_No`, `Password`);
+                     VALUES (NULL,$data[First_Name],$data[Last_Name],$data[User_Name],$data[Email],$data[Phone_No],$data[Password])";
+        $this->adapter->mysql_db_query($sql);
         return  ;
     }
 }
