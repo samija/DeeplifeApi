@@ -47,12 +47,24 @@ class UsersMapper
 //        $entity->exchangeArray($result[0]);
         return $result;
     }
+
+    /**
+     * @param $data
+     * @return string
+     */
     public function create($data)
     {
-        $data = (array)$data;
-        $sql= 'INSERT INTO  users.First_Name, users.Last_Name, users.User_Name, users.Email, users.Phone_No, users.Password)
-        VALUES (data[First_Name],data[Last_Name],data[User_Name],data[Email],data[Phone_No],data[Password])';
+         $data= (array) $data;
+//         $data['First_Name'];
+//        $data['Last_Name'];
+//        $data['User_Name'];
+//        $data['Email'];
+//        $data['Phone_No'];
+//        ;
+
+        $sql= "INSERT INTO   `users`(`User_Id`, `First_Name`, `Last_Name`, `User_Name`, `Email`, `Phone_No`, `Password`)
+        VALUES (4,'$data[First_Name]','$data[Last_Name]','$data[User_Name]','$data[Email]','$data[Phone_No]','$data[Password]')";
         $this->adapter->query($sql);
-        return $data[First_Name]. 'is sucssefully added' ;
+        return  ;
     }
 }
