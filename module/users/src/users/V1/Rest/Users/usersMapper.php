@@ -57,8 +57,9 @@ class UsersMapper
     public function create($data)
     {
          $data= (array) $data;
+            $data[User_Id]= '';
         $sql= "INSERT INTO `deeplife v1`.`users` (`User_Id`,`First_Name`, `Last_Name`, `User_Name`, `Email`, `Phone_No`, `Password`)
-                    VALUES ('$data[emp]','$data[First_Name]','$data[Last_Name]','$data[User_Name]','$data[Email]','$data[Phone_No]','$data[Password]')";
+                    VALUES ('$data[User_Id]','$data[First_Name]','$data[Last_Name]','$data[User_Name]','$data[Email]','$data[Phone_No]','$data[Password]')";
         $this->adapter->query($sql,$data);
         return  ;
     }
