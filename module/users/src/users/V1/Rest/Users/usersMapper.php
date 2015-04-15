@@ -24,12 +24,21 @@ class UsersMapper
      */
     public function fetchAll($params)
     {
-
-       $select = new Select('users');
+// $select= 'SELECT `user_info`.*,`urole`.`rName`,`generation`.`gen`,`ucatagory`.`Catagory_Name`,`users`.* FROM user_info
+//LEFT JOIN `deeplife`.`generation` ON `user_info`.`gid` = `generation`.`gid`
+//LEFT JOIN `deeplife`.`urole` ON `user_info`.`rid` = `urole`.`rid`
+//LEFT JOIN `deeplife`.`ucatagory` ON `user_info`.`ucid` = `ucatagory`.`ucid`
+//LEFT JOIN `deeplife`.`users` ON `user_info`.`user_id` = `users`.`User_Id`' ;
+       $select = new Select('users','catagory');
        $paginatorAdapter = new DbSelect($select,$this->adapter);
+     //   $paginatorAdapter = $this->adapter->query($select);
         $collection = new UsersCollection($paginatorAdapter);
 
         return $collection;
+//        return $paginatorAdapter;
+//          $resulutset=$select;
+//        $collection = new UsersCollection($resulutset);
+//        return $collection ;
     }
 
     /**
@@ -59,7 +68,7 @@ class UsersMapper
     {
          $data= (array) $data;
             $data[User_Id]= '';
-        $sql= "INSERT INTO `deeplife v1`.`users` (`User_Id`,`First_Name`, `Last_Name`, `User_Name`, `Email`, `Phone_No`, `Password`)
+        $sql= "INSERT INTO `deeplife`.`users` (`User_Id`,`First_Name`, `Last_Name`, `User_Name`, `Email`, `Phone_No`, `Password`)
                     VALUES ('$data[User_Id]','$data[First_Name]','$data[Last_Name]','$data[User_Name]','$data[Email]','$data[Phone_No]','$data[Password]')";
         $this->adapter->query($sql,$data);
         return  ;
