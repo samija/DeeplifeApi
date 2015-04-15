@@ -22,8 +22,9 @@ class UsersMapper
     /**
      * @return UserRegCollection
      */
-    public function fetchAll()
+    public function fetchAll($params)
     {
+
        $select = new Select('users');
        $paginatorAdapter = new DbSelect($select,$this->adapter);
         $collection = new UsersCollection($paginatorAdapter);
