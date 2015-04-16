@@ -69,7 +69,7 @@ class UsersMapper
          $data= (array) $data;
        $ph_no =$data['Phone_No'];
         $sql= "INSERT INTO `users` (`User_Id`,`First_Name`,`Last_Name`,`User_Name`,`Email`,`Phone_No`,`Password`)
-                      VALUES ('user','$data[First_Name]','$data[Last_Name]','$data[User_Name]','$data[Email]','$data[Phone_No]','$data[Password]')";
+                      VALUES ('$data[User_Id]','$data[First_Name]','$data[Last_Name]','$data[User_Name]','$data[Email]','$data[Phone_No]','$data[Password]')";
         $sql_u_id= 'SELECT `users`.`User_Id` FROM users
                           WHERE `Phone_No`= ?';
               $userID= $this->adpter->query($sql_u_id, array($ph_no));
