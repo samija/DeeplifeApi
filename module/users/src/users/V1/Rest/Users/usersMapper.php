@@ -48,7 +48,7 @@ class UsersMapper
      */
     public function fetchOne($User_Id)
     {
-        $sql = 'SELECT * FROM forget WHERE User_Id = ?';
+        $sql = 'SELECT DISTINCTROW * FROM forget WHERE User_Id = ?';
 
         $resultset = $this->adapter->query($sql,array($User_Id));
         $result=$resultset->toArray();
@@ -75,8 +75,8 @@ class UsersMapper
         $this->adapter->query($sql,$data);
 //        $result= $this->adapter->query('SELECT `users`.`User_Id` FROM users WHERE `Phone_No`= ?',array($ph_no));
 //        $data['ta']=$result.
-        $sql2= "INSERT INTO `user_info`(`user_id` ,`rid`,`gid`,`ucid`,`Description`,`uiid`,`Phone_No`)
-                       VALUES (last_insert_id(),'$data[rid]','$data[gid]','$data[ucid]','$data[Description]','$data[uiid]','$data[Phone_No]')";
+        $sql2= "INSERT INTO `user_info`(`uiid`, `ment_id`, `Description`, `Longtiude`, `Latitude`, `rid`, `Phone_No`, `country`, `catagory`, `generation`, `User_Id`)
+                          VALUES ('$data[User_Id]','$data[ment_id]','$data[Description]','$data[Longtiude]','$data[Latitude]','$data[rid]','$data[Phone_No]','$data[country]','$data[catagory]','$data[generation]',last_insert_id())";
         $this->adapter->query($sql2,$data);
            return  ;
     }
