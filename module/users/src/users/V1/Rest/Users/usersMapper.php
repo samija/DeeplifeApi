@@ -80,4 +80,12 @@ class UsersMapper
         $this->adapter->query($sql2,$data);
            return  ;
     }
+     public function delete($id)
+    {
+       $sql= 'DELETE FROM `users` WHERE User_Id = ?';
+       $sql1= 'DELETE FROM `user_info` WHERE User_Id = ?';
+        $this->adapter->query($sql,array($id));
+        $this->adapter->query($sql1,array($id));
+           return ;
+    }
 }
