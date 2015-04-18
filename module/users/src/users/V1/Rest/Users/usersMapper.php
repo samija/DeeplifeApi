@@ -22,20 +22,20 @@ class UsersMapper
     /**
      * @return UserRegCollection
      */
-    public function fetchAll($params)
+    public function fetchAll()
     {
-// $select= 'SELECT `user_info`.*,`urole`.`rName`,`generation`.`gen`,`ucatagory`.`Catagory_Name`,`users`.* FROM user_info
-//LEFT JOIN `deeplife`.`generation` ON `user_info`.`gid` = `generation`.`gid`
-//LEFT JOIN `deeplife`.`urole` ON `user_info`.`rid` = `urole`.`rid`
-//LEFT JOIN `deeplife`.`ucatagory` ON `user_info`.`ucid` = `ucatagory`.`ucid`
-//LEFT JOIN `deeplife`.`users` ON `user_info`.`user_id` = `users`.`User_Id`' ;
-       $select = new Select('allfiled');
+// $select= 'SELECT `users`.*,`urole`.`rName`,`user_info`.`Description`,`user_info`.`ment_id`,`user_info`.`generation`,`user_info`.`catagory`,`user_info`.`country` FROM users
+//LEFT JOIN `deeplife`.`user_info` ON `users`.`Phone_No` = `user_info`.`Phone_No`
+//LEFT JOIN `deeplife`.`user_info` ON `users`.`User_Id` = `user_info`.`User_Id`
+//LEFT JOIN `deeplife`.`user_info` ON `users`.`User_Id` = `user_info`.`ment_id`
+//LEFT JOIN `deeplife`.`urole` ON `user_info`.`rid` = `urole`.`rid` ';
+       $select = new Select('forget');
        $paginatorAdapter = new DbSelect($select,$this->adapter);
-     //   $paginatorAdapter = $this->adapter->query($select);
-        $collection = new UsersCollection($paginatorAdapter);
+      //  $paginatorAdapter = $this->adapter->query($select);
+       $collection = new UsersCollection($paginatorAdapter);
 
-        return $collection;
-//        return $paginatorAdapter;
+     return $collection;
+      // return $paginatorAdapter;
 //          $resulutset=$select;
 //        $collection = new UsersCollection($resulutset);
 //        return $collection ;
@@ -48,7 +48,7 @@ class UsersMapper
      */
     public function fetchOne($User_Id)
     {
-        $sql = 'SELECT * FROM allfiled WHERE User_Id = ?';
+        $sql = 'SELECT * FROM forget WHERE User_Id = ?';
 
         $resultset = $this->adapter->query($sql,array($User_Id));
         $result=$resultset->toArray();
@@ -68,8 +68,8 @@ class UsersMapper
     {
          $data= (array) $data;
        $ph_no =$data['Phone_No'];
-        $sql= "INSERT INTO `users` (`User_Id`,`First_Name`,`Last_Name`,`User_Name`,`Email`,`Phone_No`,`Password`)
-                      VALUES ('$data[User_Id]','$data[First_Name]','$data[Last_Name]','$data[User_Name]','$data[Email]','$data[Phone_No]','$data[Password]')";
+        $sql= "INSERT INTO `users`(`User_Id`, `First_Name`, `Middle_Name`, `Sure_Name`, `Email`, `Phone_No`, `Password`, `Image`)
+                  VALUES ('$data[User_Id]','$data[First_Name]','$data[Middle_Name]','$data[Sure_Name]','$data[Email]','$data[Phone_No]','$data[Password]','$data[Image]')";
 //        $sql_id= 'SELECT `users`.`User_Id` FROM users
 //                          WHERE `Phone_No`= ?';
         $this->adapter->query($sql,$data);
