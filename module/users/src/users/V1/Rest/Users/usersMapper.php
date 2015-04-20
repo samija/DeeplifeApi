@@ -67,14 +67,9 @@ class UsersMapper
     public function create($data)
     {
          $data= (array) $data;
-       $ph_no =$data['Phone_No'];
         $sql= "INSERT INTO `users`(`User_Id`, `First_Name`, `Middle_Name`, `Sure_Name`, `Email`, `Phone_No`, `Password`, `Image`)
                   VALUES ('$data[User_Id]','$data[First_Name]','$data[Middle_Name]','$data[Sure_Name]','$data[Email]','$data[Phone_No]','$data[Password]','$data[Image]')";
-//        $sql_id= 'SELECT `users`.`User_Id` FROM users
-//                          WHERE `Phone_No`= ?';
         $this->adapter->query($sql,$data);
-//        $result= $this->adapter->query('SELECT `users`.`User_Id` FROM users WHERE `Phone_No`= ?',array($ph_no));
-//        $data['ta']=$result.
         $sql2= "INSERT INTO `user_info`(`uiid`, `ment_id`, `Description`, `Longtiude`, `Latitude`, `rid`, `Phone_No`, `country`, `catagory`, `generation`, `User_Id`)
                           VALUES ('$data[User_Id]','$data[ment_id]','$data[Description]','$data[Longtiude]','$data[Latitude]','$data[rid]','$data[Phone_No]','$data[country]','$data[catagory]','$data[generation]',last_insert_id())";
         $this->adapter->query($sql2,$data);
@@ -86,6 +81,18 @@ class UsersMapper
        $sql1= 'DELETE FROM `user_info` WHERE User_Id = ?';
         $this->adapter->query($sql,array($id));
         $this->adapter->query($sql1,array($id));
-           return ;
+           return  ;
+    }
+    PUBLIC FUNCTION UPDATE($id,$data)
+    {
+               $data= (array) $data;
+        $sql='UPDATE `users` SET `First_Name`= $data[First_Name],`Middle_Name`=$data[Middle_Name],`Sure_Name`=$data[Sure_Name],
+                        `Email`=$data[Email],`Phone_No`=$data[Phone_No],`Password`=$data[Password],`Image`=$data[Image] WHERE `User_Id`= $id';
+        $sql1='UPDATE `user_info` SET `ment_id`=$data[ment_id],`Description`=$data[Description],`Longtiude`=$data[Longtiude],
+                 `Latitude`=$data[Latitude],`rid`=$data[rid],`Phone_No`=$data[Phone_No]
+                 ,`country`=$data[country],`catagory`=$data[catagory],`generation`=$data[generation] WHERE `User_Id`= $id';
+        $this->adapter->query($sql,$data,array($id));
+        $this->adapter->query($sql1,$data,array($id));
+                     return ;
     }
 }
